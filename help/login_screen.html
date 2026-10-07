@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Screen — Help</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header p { opacity: 0.9; font-size: 14px; }
+        .content { padding: 30px; }
+        .section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+        .section h2 {
+            color: #667eea;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+        .section p, .section li {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #555;
+        }
+        .section ul { padding-left: 20px; }
+        .section li { margin-bottom: 6px; }
+        .flow-box {
+            background: #e8eaf6;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: #333;
+            white-space: pre-wrap;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-right: 6px;
+        }
+        .badge-getx { background: #00d2d3; color: white; }
+        .badge-clean { background: #ff6b6b; color: white; }
+        .badge-mvvm { background: #54a0ff; color: white; }
+        .badge-screenutil { background: #ff9f43; color: white; }
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .file-ref {
+            background: #2d3436;
+            color: #dfe6e9;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .img-placeholder {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            height: 180px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            margin: 15px 0;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Login Screen</h1>
+            <p>Kaise kaam karta hai — Step by Step Flow</p>
+        </div>
+        <div class="content">
+
+            <div class="section">
+                <h2>Tags</h2>
+                <span class="badge badge-getx">GetX</span>
+                <span class="badge badge-clean">CLEAN</span>
+                <span class="badge badge-mvvm">MVVM</span>
+                <span class="badge badge-screenutil">ScreenUtil</span>
+            </div>
+
+            <div class="section">
+                <h2>1. Yeh Screen Kya Karta Hai?</h2>
+                <p>Login Screen user ko <span class="highlight">email</span> aur <span class="highlight">password</span> enter karne deta hai. Agar credentials sahi hain toh user <span class="highlight">Course Dashboard</span> pe chala jata hai.</p>
+                <div class="img-placeholder">
+                    [Login Screen Image]<br>
+                    Email field, Password field, Login button<br>
+                    Welcome Back header with school icon
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>2. Files Involved</h2>
+                <ul>
+                    <li><span class="file-ref">lib/presentation/screens/login_screen.dart</span> — UI dikhata hai</li>
+                    <li><span class="file-ref">lib/presentation/viewmodels/login_viewmodel.dart</span> — State manage karta hai (GetX)</li>
+                    <li><span class="file-ref">lib/domain/usecases/login_usecase.dart</span> — Business logic</li>
+                    <li><span class="file-ref">lib/data/repositories/auth_repository_impl.dart</span> — Data handle karta hai</li>
+                    <li><span class="file-ref">lib/core/storage/secure_token_storage.dart</span> — Token save karta hai</li>
+                    <li><span class="file-ref">lib/core/utils/input_validators.dart</span> — Email/password validation</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>3. Complete Flow (Step by Step)</h2>
+                <div class="flow-box">
+Step 1: User app kholta hai
+     │
+     ▼
+Step 2: main.dart me _RootGate check karta hai
+     │  "Kya SecureStorage me token hai?"
+     │
+     ├── Token hai → CourseDashboardScreen pe jao
+     │
+     └── Token nahi hai → LoginScreen dikhao
+          │
+          ▼
+Step 3: User email + password enter karta hai
+     │  TextFormField onChanged pe value set hoti hai
+     │  controller.email.value = email
+     │  controller.password.value = password
+     │
+     ▼
+Step 4: User "Login" button dabata hai
+     │  Form validate hota hai (InputValidators)
+     │  Email regex check, Password min 6 chars
+     │
+     ▼
+Step 5: controller.login() call hota hai
+     │  isLoading.value = true (button loading me badal jata hai)
+     │
+     ▼
+Step 6: LoginUseCase call hota hai
+     │  → AuthRepository.login(email, password)
+     │  → AuthRepositoryImpl check karta hai
+     │     email == 'test@demo.com' && password == 'demo123'
+     │
+     ├── Sahi hain:
+     │   → Token save hota hai SecureStorage me
+     │   → (null, token) return hota hai
+     │   → isLoading.value = false
+     │   → Get.offAll(() => CourseDashboardScreen())
+     │
+     └── Galat hain:
+         → (AuthFailure, null) return hota hai
+         → error.value = AuthFailure
+         → UI pe red text dikhta hai
+         → isLoading.value = false
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>4. CLEAN Architecture Mein Kahan Aata Hai?</h2>
+                <div class="flow-box">
+┌─────────────────────────────────────────┐
+│  PRESENTATION LAYER                      │
+│  ┌─────────────────────────────────┐    │
+│  │ LoginScreen (UI)                 │    │
+│  │ - TextFormField (email)          │    │
+│  │ - TextFormField (password)       │    │
+│  │ - FilledButton (login)           │    │
+│  └──────────────┬──────────────────┘    │
+│                 │ calls                   │
+│  ┌──────────────▼──────────────────┐    │
+│  │ LoginViewModel (GetX)            │    │
+│  │ - email, password (obs)          │    │
+│  │ - isLoading (obs)                │    │
+│  │ - error (obs)                    │    │
+│  │ - login() method                 │    │
+│  └──────────────┬──────────────────┘    │
+└─────────────────┼───────────────────────┘
+                  │ calls
+┌─────────────────▼───────────────────────┐
+│  DOMAIN LAYER                           │
+│  ┌─────────────────────────────────┐    │
+│  │ LoginUseCase                     │    │
+│  │ - call(email, password)          │    │
+│  │ - AuthRepository ko call karta  │    │
+│  └──────────────┬──────────────────┘    │
+└─────────────────┼───────────────────────┘
+                  │ implements
+┌─────────────────▼───────────────────────┐
+│  DATA LAYER                             │
+│  ┌─────────────────────────────────┐    │
+│  │ AuthRepositoryImpl               │    │
+│  │ - Mock login check               │    │
+│  │ - Token save SecureStorage me    │    │
+│  └─────────────────────────────────┘    │
+└─────────────────────────────────────────┘
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>5. MVVM Pattern Kya Hai?</h2>
+                <ul>
+                    <li><strong>Model:</strong> <span class="file-ref">AuthRepositoryImpl</span> — Data source</li>
+                    <li><strong>ViewModel:</strong> <span class="file-ref">LoginViewModel</span> — State + Logic (GetX)</li>
+                    <li><strong>View:</strong> <span class="file-ref">LoginScreen</span> — Sirf UI, koi logic nahi</li>
+                </ul>
+                <p style="margin-top:10px;">View ko Model ka pata nahi hota. ViewModel beech me hai.</p>
+            </div>
+
+            <div class="section">
+                <h2>6. GetX Kaise Use Ho Raha Hai?</h2>
+                <ul>
+                    <li><span class="file-ref">.obs</span> — Reactive variable (auto-update UI)</li>
+                    <li><span class="file-ref">Obx()</span> — Widget ko reactive banata hai</li>
+                    <li><span class="file-ref">GetView&lt;LoginViewModel&gt;</span> — Controller auto-milta hai</li>
+                    <li><span class="file-ref">Get.offAll()</span> — Navigate + purane screens remove</li>
+                    <li><span class="file-ref">Get.put()</span> — Dependency inject karta hai</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>7. ScreenUtil Responsive UI</h2>
+                <p>Actual codebase me <span class="file-ref">flutter_screenutil</span> use hota hai responsive design ke liye:</p>
+                <div class="flow-box">
+EdgeInsets.all(24.w)     // .w = width responsive
+EdgeInsets.all(16.h)     // .h = height responsive
+fontSize: 14.sp          // .sp = font responsive
+borderRadius: 12.r      // .r = radius responsive
+Icon size: 64.sp         // icons bhi responsive
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>8. Demo Credentials</h2>
+                <div class="flow-box">
+Email:    test@demo.com
+Password: demo123
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

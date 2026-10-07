@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Dashboard Screen — Help</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header p { opacity: 0.9; font-size: 14px; }
+        .content { padding: 30px; }
+        .section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #11998e;
+        }
+        .section h2 {
+            color: #11998e;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+        .section p, .section li {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #555;
+        }
+        .section ul { padding-left: 20px; }
+        .section li { margin-bottom: 6px; }
+        .flow-box {
+            background: #e8f5e9;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: #333;
+            white-space: pre-wrap;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-right: 6px;
+        }
+        .badge-getx { background: #00d2d3; color: white; }
+        .badge-clean { background: #ff6b6b; color: white; }
+        .badge-mvvm { background: #54a0ff; color: white; }
+        .badge-offline { background: #ff9f43; color: white; }
+        .badge-screenutil { background: #ff9f43; color: white; }
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .file-ref {
+            background: #2d3436;
+            color: #dfe6e9;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .img-placeholder {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            height: 180px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            margin: 15px 0;
+            text-align: center;
+            padding: 20px;
+        }
+        .state-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+            margin: 2px;
+        }
+        .state-loading { background: #dfe6e9; color: #636e72; }
+        .state-success { background: #d4edda; color: #155724; }
+        .state-empty { background: #fff3cd; color: #856404; }
+        .state-error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Course Dashboard Screen</h1>
+            <p>Kaise kaam karta hai — Step by Step Flow</p>
+        </div>
+        <div class="content">
+
+            <div class="section">
+                <h2>Tags</h2>
+                <span class="badge badge-getx">GetX</span>
+                <span class="badge badge-clean">CLEAN</span>
+                <span class="badge badge-mvvm">MVVM</span>
+                <span class="badge badge-offline">Offline-First</span>
+                <span class="badge badge-screenutil">ScreenUtil</span>
+            </div>
+
+            <div class="section">
+                <h2>1. Yeh Screen Kya Karta Hai?</h2>
+                <p>Dashboard Screen <span class="highlight">saari courses ki list</span> dikhta hai. Har course ka title, instructor, lesson count aur progress bar hota hai. User kisi bhi course pe tap karke uske <span class="highlight">details</span> dekh sakta hai. AppBar me <span class="highlight">logout</span> button bhi hai.</p>
+                <div class="img-placeholder">
+                    [Dashboard Screen Image]<br>
+                    Course cards list with progress bars<br>
+                    Logout icon in AppBar
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>2. Files Involved</h2>
+                <ul>
+                    <li><span class="file-ref">lib/presentation/screens/course_dashboard_screen.dart</span> — UI</li>
+                    <li><span class="file-ref">lib/presentation/viewmodels/course_dashboard_viewmodel.dart</span> — State (GetX)</li>
+                    <li><span class="file-ref">lib/presentation/widgets/course_card.dart</span> — Reusable card widget</li>
+                    <li><span class="file-ref">lib/domain/usecases/get_courses_usecase.dart</span> — Business logic</li>
+                    <li><span class="file-ref">lib/data/repositories/course_repository_impl.dart</span> — Data + Offline logic</li>
+                    <li><span class="file-ref">lib/database/app_database.dart</span> — Drift SQLite database</li>
+                    <li><span class="file-ref">lib/core/storage/secure_token_storage.dart</span> — Logout ke liye</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>3. Complete Flow (Step by Step)</h2>
+                <div class="flow-box">
+Step 1: Screen khulta hai
+     │  GetView<CourseDashboardViewModel> apna controller leta hai
+     │
+     ▼
+Step 2: controller.load() call hota hai
+     │  state = DashboardState.loading
+     │  UI pe CircularProgressIndicator dikhta hai
+     │
+     ▼
+Step 3: GetCoursesUseCase call hota hai
+     │  → CourseRepository.getCourses()
+     │
+     ▼
+Step 4: Repository check karta hai — Internet hai?
+     │
+     ├── ONLINE:
+     │   → RemoteDataSource JSON asset se data load karta hai
+     │   → LocalDataSource Drift DB me cache karta hai
+     │   → (null, courses) return karta hai
+     │
+     └── OFFLINE:
+         → Drift DB se cached data read karta hai
+         → Cache hai? → (null, cachedCourses) return
+         → Cache nahi? → (CacheFailure, null) return
+     │
+     ▼
+Step 5: Result ke hisaab se state set hota hai
+     │
+     ├── Success + data hai → DashboardState.success
+     │   → ListView me CourseCards dikhte hain
+     │
+     ├── Success + data nahi → DashboardState.empty
+     │   → "No courses available." message
+     │
+     └── Error → DashboardState.error
+         → Error message + Retry button
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>4. States Kya Hain?</h2>
+                <p>ViewModel ke paas 5 states hain:</p>
+                <div style="margin-top:10px;">
+                    <span class="state-badge state-loading">initial</span>
+                    <span class="state-badge state-loading">loading</span>
+                    <span class="state-badge state-success">success</span>
+                    <span class="state-badge state-empty">empty</span>
+                    <span class="state-badge state-error">error</span>
+                </div>
+                <div class="flow-box" style="margin-top:15px;">
+initial   → App just started, kuch load nahi hua
+loading   → Data load ho raha hai (spinner dikhta hai)
+success   → Data mil gaya, courses dikhao
+empty     → Data nahi mila (no courses)
+error     → Kuch gadbad hui (show error + retry)
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>5. Offline-First Kaise Kaam Karta Hai?</h2>
+                <div class="flow-box">
+ONLINE (Internet hai):
+     JSON Asset ──▶ RemoteDataSource ──▶ Repository
+                                             │
+                                             ▼
+                                     Drift DB (cache)
+                                             │
+                                             ▼
+                                        UI (courses)
+
+OFFLINE (Internet nahi hai):
+     Drift DB ──▶ LocalDataSource ──▶ Repository ──▶ UI (courses)
+
+LESSON COMPLETE (Offline me bhi):
+     User tap "Mark complete"
+          │
+          ▼
+     Drift DB me update
+          │
+          ▼
+     Progress recalculate
+     (done/total * 100)
+          │
+          ▼
+     UI update
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>6. CLEAN Architecture Flow</h2>
+                <div class="flow-box">
+┌─────────────────────────────────────────────┐
+│  PRESENTATION                                │
+│  CourseDashboardScreen                       │
+│    └─ CourseCard (widget)                    │
+│         └─ onContinue → Detail Screen        │
+│    └─ RefreshIndicator (pull-to-refresh)    │
+│    └─ Logout IconButton                      │
+└──────────────────┬──────────────────────────┘
+                   │
+┌──────────────────▼──────────────────────────┐
+│  VIEWMODEL (GetX)                            │
+│  CourseDashboardViewModel                    │
+│    - state (obs)                             │
+│    - courses (obs)  ← 20-row pages           │
+│    - allCourses (obs) ← full 50              │
+│    - isLoadingMore (obs)                     │
+│    - scrollController                        │
+│    - load() / loadMore() / refresh()         │
+└──────────────────┬──────────────────────────┘
+                   │
+┌──────────────────▼──────────────────────────┐
+│  DOMAIN                                      │
+│  GetCoursesUseCase                           │
+│    - call() → Repository ko jata hai         │
+└──────────────────┬──────────────────────────┘
+                   │
+┌──────────────────▼──────────────────────────┐
+│  DATA                                        │
+│  CourseRepositoryImpl                        │
+│    - Online: Remote → Cache → Return         │
+│    - Offline: Cache → Return                 │
+│                                              │
+│  DataSources:                                │
+│    - CourseRemoteDataSource (JSON asset)     │
+│    - CourseLocalDataSource (Drift DB)        │
+└──────────────────────────────────────────────┘
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>7. Pull-to-Refresh</h2>
+                <p>User neeche pull karta hai toh <span class="file-ref">RefreshIndicator</span> trigger hota hai:</p>
+                <div class="flow-box">
+RefreshIndicator
+    └─ onRefresh: controller.refresh()
+         └─ state = initial
+         └─ courses reset to first 20
+         └─ load() dobara call
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>7.5 Lazy Loading (20 rows at a time)</h2>
+                <p>Dashboard list <span class="highlight">lazy loading</span> use karti hai — ek baar me sirf <span class="highlight">20 courses</span> dikhta hai. 50 courses me se pehle 20, phir 40, phir 50.</p>
+                <div class="flow-box">
+Step 1: Screen load → getCourses() se 50 courses aati hain
+    │  courses = first 20 rows
+    ▼
+Step 2: User scroll karta hai neeche
+    │  scrollController listener trigger
+    │  pixels >= maxScrollExtent - 200
+    ▼
+Step 3: controller.loadMore()
+    │  isLoadingMore = true
+    │  List ke bottom pe chhota CENTERED spinner dikhta hai
+    │  await Future.delayed(600ms) — simulate network
+    ▼
+Step 4: Agli 20 rows append
+    │  courses.assignAll(allCourses.take(+20))
+    │  isLoadingMore = false
+    ▼
+Step 5: hasMore == false hone tak repeat (20 → 40 → 50)
+    </div>
+                <div class="flow-box" style="margin-top:15px;">
+allCourses = 50 (full data, ek baar load)
+courses    = visible slice (pehle 20, phir 40, phir 50)
+hasMore    = courses.length &lt; allCourses.length
+isLoadingMore = bottom spinner ka switch
+pageSize   = 20
+                </div>
+                <p style="margin-top:10px;">Bottom spinner ka code <span class="file-ref">ListView.builder</span> me extra last row hoti hai jo sirf tab dikhti hai jab <span class="highlight">isLoadingMore</span> true ho:</p>
+                <div class="flow-box">
+if (i &gt;= controller.courses.length) {
+  return Center(
+    child: SizedBox(width: 24.w, height: 24.h,
+      child: CircularProgressIndicator(strokeWidth: 2.5)),
+  );
+}
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>8. Logout Kaise Kaam Karta Hai?</h2>
+                <p>AppBar me logout icon hai. Tap karne pe:</p>
+                <div class="flow-box">
+IconButton (logout icon)
+    └─ Get.find<SecureTokenStorage>().deleteToken()
+         └─ Get.offAll(() => LoginScreen())
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>9. ScreenUtil Responsive UI</h2>
+                <p>Actual codebase me <span class="file-ref">flutter_screenutil</span> use hota hai:</p>
+                <div class="flow-box">
+EdgeInsets.all(24.w)     // .w = width responsive
+fontSize: 16.sp          // .sp = font responsive
+Icon size: 48.sp         // icons bhi responsive
+SizedBox(height: 12.h)  // .h = height responsive
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

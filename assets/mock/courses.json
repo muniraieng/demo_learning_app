@@ -1,0 +1,612 @@
+[
+  {
+    "id": 1,
+    "title": "Python Programming",
+    "instructor": "John Smith",
+    "progress": 50,
+    "lessons": [
+      { "id": 101, "courseId": 1, "title": "Introduction", "isCompleted": true },
+      { "id": 102, "courseId": 1, "title": "Variables & Data Types", "isCompleted": true },
+      { "id": 103, "courseId": 1, "title": "Functions", "isCompleted": false },
+      { "id": 104, "courseId": 1, "title": "OOP", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Generative AI",
+    "instructor": "Sarah Williams",
+    "progress": 25,
+    "lessons": [
+      { "id": 201, "courseId": 2, "title": "What is GenAI?", "isCompleted": true },
+      { "id": 202, "courseId": 2, "title": "Prompt Engineering", "isCompleted": false },
+      { "id": 203, "courseId": 2, "title": "Fine-tuning Basics", "isCompleted": false },
+      { "id": 204, "courseId": 2, "title": "RAG Pipelines", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Full Stack Development",
+    "instructor": "David Brown",
+    "progress": 14,
+    "lessons": [
+      { "id": 301, "courseId": 3, "title": "HTML & CSS", "isCompleted": true },
+      { "id": 302, "courseId": 3, "title": "JavaScript", "isCompleted": false },
+      { "id": 303, "courseId": 3, "title": "REST APIs", "isCompleted": false },
+      { "id": 304, "courseId": 3, "title": "Databases", "isCompleted": false },
+      { "id": 305, "courseId": 3, "title": "Deployment", "isCompleted": false },
+      { "id": 306, "courseId": 3, "title": "Testing", "isCompleted": false },
+      { "id": 307, "courseId": 3, "title": "CI/CD", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Machine Learning Fundamentals",
+    "instructor": "Alice Johnson",
+    "progress": 30,
+    "lessons": [
+      { "id": 401, "courseId": 4, "title": "What is ML?", "isCompleted": true },
+      { "id": 402, "courseId": 4, "title": "Supervised Learning", "isCompleted": true },
+      { "id": 403, "courseId": 4, "title": "Unsupervised Learning", "isCompleted": false },
+      { "id": 404, "courseId": 4, "title": "Neural Networks", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Deep Learning with Python",
+    "instructor": "Bob Martinez",
+    "progress": 20,
+    "lessons": [
+      { "id": 501, "courseId": 5, "title": "TensorFlow Basics", "isCompleted": true },
+      { "id": 502, "courseId": 5, "title": "Keras Models", "isCompleted": false },
+      { "id": 503, "courseId": 5, "title": "CNNs", "isCompleted": false },
+      { "id": 504, "courseId": 5, "title": "RNNs", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Natural Language Processing",
+    "instructor": "Carol White",
+    "progress": 40,
+    "lessons": [
+      { "id": 601, "courseId": 6, "title": "Text Preprocessing", "isCompleted": true },
+      { "id": 602, "courseId": 6, "title": "Tokenization", "isCompleted": true },
+      { "id": 603, "courseId": 6, "title": "Word Embeddings", "isCompleted": true },
+      { "id": 604, "courseId": 6, "title": "Transformers", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Computer Vision Basics",
+    "instructor": "Daniel Lee",
+    "progress": 15,
+    "lessons": [
+      { "id": 701, "courseId": 7, "title": "Image Processing", "isCompleted": true },
+      { "id": 702, "courseId": 7, "title": "OpenCV", "isCompleted": false },
+      { "id": 703, "courseId": 7, "title": "Object Detection", "isCompleted": false },
+      { "id": 704, "courseId": 7, "title": "Face Recognition", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Python for Data Science",
+    "instructor": "Eva Garcia",
+    "progress": 60,
+    "lessons": [
+      { "id": 801, "courseId": 8, "title": "NumPy", "isCompleted": true },
+      { "id": 802, "courseId": 8, "title": "Pandas", "isCompleted": true },
+      { "id": 803, "courseId": 8, "title": "Matplotlib", "isCompleted": true },
+      { "id": 804, "courseId": 8, "title": "Seaborn", "isCompleted": true },
+      { "id": 805, "courseId": 8, "title": "Plotly", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 9,
+    "title": "React Native Basics",
+    "instructor": "Frank Wilson",
+    "progress": 35,
+    "lessons": [
+      { "id": 901, "courseId": 9, "title": "RN Setup", "isCompleted": true },
+      { "id": 902, "courseId": 9, "title": "Components", "isCompleted": true },
+      { "id": 903, "courseId": 9, "title": "Navigation", "isCompleted": false },
+      { "id": 904, "courseId": 9, "title": "State Management", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Advanced React Native",
+    "instructor": "Grace Kim",
+    "progress": 10,
+    "lessons": [
+      { "id": 1001, "courseId": 10, "title": "Native Modules", "isCompleted": true },
+      { "id": 1002, "courseId": 10, "title": "Animations", "isCompleted": false },
+      { "id": 1003, "courseId": 10, "title": "Performance", "isCompleted": false },
+      { "id": 1004, "courseId": 10, "title": "Publishing", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 11,
+    "title": "AI Ethics & Bias",
+    "instructor": "Henry Chen",
+    "progress": 45,
+    "lessons": [
+      { "id": 1101, "courseId": 11, "title": "What is AI Ethics?", "isCompleted": true },
+      { "id": 1102, "courseId": 11, "title": "Bias in Data", "isCompleted": true },
+      { "id": 1103, "courseId": 11, "title": "Fairness", "isCompleted": false },
+      { "id": 1104, "courseId": 11, "title": "Transparency", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 12,
+    "title": "Python Web Scraping",
+    "instructor": "Ivy Taylor",
+    "progress": 55,
+    "lessons": [
+      { "id": 1201, "courseId": 12, "title": "BeautifulSoup", "isCompleted": true },
+      { "id": 1202, "courseId": 12, "title": "Scrapy", "isCompleted": true },
+      { "id": 1203, "courseId": 12, "title": "Selenium", "isCompleted": false },
+      { "id": 1204, "courseId": 12, "title": "Data Storage", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 13,
+    "title": "Reinforcement Learning",
+    "instructor": "Jack Anderson",
+    "progress": 5,
+    "lessons": [
+      { "id": 1301, "courseId": 13, "title": "What is RL?", "isCompleted": true },
+      { "id": 1302, "courseId": 13, "title": "Q-Learning", "isCompleted": false },
+      { "id": 1303, "courseId": 13, "title": "Deep Q-Networks", "isCompleted": false },
+      { "id": 1304, "courseId": 13, "title": "Policy Gradients", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 14,
+    "title": "Python Automation",
+    "instructor": "Karen Thomas",
+    "progress": 70,
+    "lessons": [
+      { "id": 1401, "courseId": 14, "title": "File Handling", "isCompleted": true },
+      { "id": 1402, "courseId": 14, "title": "OS Module", "isCompleted": true },
+      { "id": 1403, "courseId": 14, "title": "Subprocess", "isCompleted": true },
+      { "id": 1404, "courseId": 14, "title": "Scheduling", "isCompleted": true },
+      { "id": 1405, "courseId": 14, "title": "Email Automation", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 15,
+    "title": "ChatGPT API Mastery",
+    "instructor": "Leo Rodriguez",
+    "progress": 25,
+    "lessons": [
+      { "id": 1501, "courseId": 15, "title": "API Setup", "isCompleted": true },
+      { "id": 1502, "courseId": 15, "title": "Completions", "isCompleted": false },
+      { "id": 1503, "courseId": 15, "title": "Chat API", "isCompleted": false },
+      { "id": 1504, "courseId": 15, "title": "Function Calling", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 16,
+    "title": "Python Decorators & Generators",
+    "instructor": "Mia Patel",
+    "progress": 80,
+    "lessons": [
+      { "id": 1601, "courseId": 16, "title": "Closures", "isCompleted": true },
+      { "id": 1602, "courseId": 16, "title": "Decorators", "isCompleted": true },
+      { "id": 1603, "courseId": 16, "title": "Generators", "isCompleted": true },
+      { "id": 1604, "courseId": 16, "title": "Context Managers", "isCompleted": true },
+      { "id": 1605, "courseId": 16, "title": "Metaclasses", "isCompleted": true }
+    ]
+  },
+  {
+    "id": 17,
+    "title": "AI in Healthcare",
+    "instructor": "Noah Clark",
+    "progress": 12,
+    "lessons": [
+      { "id": 1701, "courseId": 17, "title": "Medical Imaging AI", "isCompleted": true },
+      { "id": 1702, "courseId": 17, "title": "Drug Discovery", "isCompleted": false },
+      { "id": 1703, "courseId": 17, "title": "Patient Data", "isCompleted": false },
+      { "id": 1704, "courseId": 17, "title": "Diagnostics", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 18,
+    "title": "React Native with TypeScript",
+    "instructor": "Olivia Hall",
+    "progress": 33,
+    "lessons": [
+      { "id": 1801, "courseId": 18, "title": "TS Basics", "isCompleted": true },
+      { "id": 1802, "courseId": 18, "title": "Typed Components", "isCompleted": true },
+      { "id": 1803, "courseId": 18, "title": "Typed Navigation", "isCompleted": false },
+      { "id": 1804, "courseId": 18, "title": "Typed Hooks", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 19,
+    "title": "Python Design Patterns",
+    "instructor": "Peter Young",
+    "progress": 42,
+    "lessons": [
+      { "id": 1901, "courseId": 19, "title": "Singleton", "isCompleted": true },
+      { "id": 1902, "courseId": 19, "title": "Factory", "isCompleted": true },
+      { "id": 1903, "courseId": 19, "title": "Observer", "isCompleted": false },
+      { "id": 1904, "courseId": 19, "title": "Strategy", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 20,
+    "title": "Stable Diffusion Art",
+    "instructor": "Quinn Adams",
+    "progress": 18,
+    "lessons": [
+      { "id": 2001, "courseId": 20, "title": "Diffusion Models", "isCompleted": true },
+      { "id": 2002, "courseId": 20, "title": "Prompt Crafting", "isCompleted": false },
+      { "id": 2003, "courseId": 20, "title": "img2Img", "isCompleted": false },
+      { "id": 2004, "courseId": 20, "title": "ControlNet", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 21,
+    "title": "Python Async Programming",
+    "instructor": "Rachel Green",
+    "progress": 28,
+    "lessons": [
+      { "id": 2101, "courseId": 21, "title": "Async/Await", "isCompleted": true },
+      { "id": 2102, "courseId": 21, "title": "Event Loop", "isCompleted": false },
+      { "id": 2103, "courseId": 21, "title": "aiohttp", "isCompleted": false },
+      { "id": 2104, "courseId": 21, "title": "Async DB", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 22,
+    "title": "AI Agents & Tool Use",
+    "instructor": "Sam Turner",
+    "progress": 8,
+    "lessons": [
+      { "id": 2201, "courseId": 22, "title": "What are AI Agents?", "isCompleted": true },
+      { "id": 2202, "courseId": 22, "title": "Tool Calling", "isCompleted": false },
+      { "id": 2203, "courseId": 22, "title": "Planning", "isCompleted": false },
+      { "id": 2204, "courseId": 22, "title": "Multi-Agent Systems", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 23,
+    "title": "Python Testing with Pytest",
+    "instructor": "Tina Baker",
+    "progress": 65,
+    "lessons": [
+      { "id": 2301, "courseId": 23, "title": "Pytest Basics", "isCompleted": true },
+      { "id": 2302, "courseId": 23, "title": "Fixtures", "isCompleted": true },
+      { "id": 2303, "courseId": 23, "title": "Mocking", "isCompleted": true },
+      { "id": 2304, "courseId": 23, "title": "Coverage", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 24,
+    "title": "React Native Animations",
+    "instructor": "Uma Scott",
+    "progress": 22,
+    "lessons": [
+      { "id": 2401, "courseId": 24, "title": "Animated API", "isCompleted": true },
+      { "id": 2402, "courseId": 24, "title": "Layout Animations", "isCompleted": false },
+      { "id": 2403, "courseId": 24, "title": "Reanimated", "isCompleted": false },
+      { "id": 2404, "courseId": 24, "title": "Gestures", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 25,
+    "title": "Python GUI with Tkinter",
+    "instructor": "Victor Hughes",
+    "progress": 50,
+    "lessons": [
+      { "id": 2501, "courseId": 25, "title": "Tkinter Basics", "isCompleted": true },
+      { "id": 2502, "courseId": 25, "title": "Widgets", "isCompleted": true },
+      { "id": 2503, "courseId": 25, "title": "Layouts", "isCompleted": false },
+      { "id": 2504, "courseId": 25, "title": "Events", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 26,
+    "title": "LangChain for LLM Apps",
+    "instructor": "Wendy Collins",
+    "progress": 15,
+    "lessons": [
+      { "id": 2601, "courseId": 26, "title": "Chains", "isCompleted": true },
+      { "id": 2602, "courseId": 26, "title": "Memory", "isCompleted": false },
+      { "id": 2603, "courseId": 26, "title": "Agents", "isCompleted": false },
+      { "id": 2604, "courseId": 26, "title": "RAG", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 27,
+    "title": "Python Data Structures",
+    "instructor": "Xavier Reed",
+    "progress": 90,
+    "lessons": [
+      { "id": 2701, "courseId": 27, "title": "Lists & Tuples", "isCompleted": true },
+      { "id": 2702, "courseId": 27, "title": "Dicts & Sets", "isCompleted": true },
+      { "id": 2703, "courseId": 27, "title": "Stacks & Queues", "isCompleted": true },
+      { "id": 2704, "courseId": 27, "title": "Trees", "isCompleted": true },
+      { "id": 2705, "courseId": 27, "title": "Graphs", "isCompleted": true }
+    ]
+  },
+  {
+    "id": 28,
+    "title": "AI Content Creation",
+    "instructor": "Yara Mitchell",
+    "progress": 35,
+    "lessons": [
+      { "id": 2801, "courseId": 28, "title": "AI Writing Tools", "isCompleted": true },
+      { "id": 2802, "courseId": 28, "title": "AI Image Gen", "isCompleted": true },
+      { "id": 2803, "courseId": 28, "title": "AI Video", "isCompleted": false },
+      { "id": 2804, "courseId": 28, "title": "AI Music", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 29,
+    "title": "React Native State Management",
+    "instructor": "Zane Cooper",
+    "progress": 40,
+    "lessons": [
+      { "id": 2901, "courseId": 29, "title": "useState & useEffect", "isCompleted": true },
+      { "id": 2902, "courseId": 29, "title": "Context API", "isCompleted": true },
+      { "id": 2903, "courseId": 29, "title": "Redux Toolkit", "isCompleted": false },
+      { "id": 2904, "courseId": 29, "title": "Zustand", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 30,
+    "title": "Python Flask Web Dev",
+    "instructor": "Amy Foster",
+    "progress": 55,
+    "lessons": [
+      { "id": 3001, "courseId": 30, "title": "Flask Setup", "isCompleted": true },
+      { "id": 3002, "courseId": 30, "title": "Routes", "isCompleted": true },
+      { "id": 3003, "courseId": 30, "title": "Templates", "isCompleted": false },
+      { "id": 3004, "courseId": 30, "title": "Forms", "isCompleted": false },
+      { "id": 3005, "courseId": 30, "title": "Database", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 31,
+    "title": "AI for Business",
+    "instructor": "Ben Howard",
+    "progress": 20,
+    "lessons": [
+      { "id": 3101, "courseId": 31, "title": "AI Strategy", "isCompleted": true },
+      { "id": 3102, "courseId": 31, "title": "Use Cases", "isCompleted": false },
+      { "id": 3103, "courseId": 31, "title": "ROI", "isCompleted": false },
+      { "id": 3104, "courseId": 31, "title": "Implementation", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 32,
+    "title": "Python Django Framework",
+    "instructor": "Cathy Morgan",
+    "progress": 30,
+    "lessons": [
+      { "id": 3201, "courseId": 32, "title": "Django Setup", "isCompleted": true },
+      { "id": 3202, "courseId": 32, "title": "Models", "isCompleted": true },
+      { "id": 3203, "courseId": 32, "title": "Views", "isCompleted": false },
+      { "id": 3204, "courseId": 32, "title": "Admin", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 33,
+    "title": "React Native Navigation",
+    "instructor": "Dan Rivera",
+    "progress": 45,
+    "lessons": [
+      { "id": 3301, "courseId": 33, "title": "React Navigation", "isCompleted": true },
+      { "id": 3302, "courseId": 33, "title": "Stack Navigator", "isCompleted": true },
+      { "id": 3303, "courseId": 33, "title": "Tab Navigator", "isCompleted": false },
+      { "id": 3304, "courseId": 33, "title": "Drawer Navigator", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 34,
+    "title": "Python FastAPI",
+    "instructor": "Ella Barnes",
+    "progress": 25,
+    "lessons": [
+      { "id": 3401, "courseId": 34, "title": "FastAPI Setup", "isCompleted": true },
+      { "id": 3402, "courseId": 34, "title": "Pydantic Models", "isCompleted": false },
+      { "id": 3403, "courseId": 34, "title": "Dependencies", "isCompleted": false },
+      { "id": 3404, "courseId": 34, "title": "WebSockets", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 35,
+    "title": "AI Model Deployment",
+    "instructor": "Finn Ward",
+    "progress": 10,
+    "lessons": [
+      { "id": 3501, "courseId": 35, "title": "Model Serving", "isCompleted": true },
+      { "id": 3502, "courseId": 35, "title": "Docker for ML", "isCompleted": false },
+      { "id": 3503, "courseId": 35, "title": "Cloud Deploy", "isCompleted": false },
+      { "id": 3504, "courseId": 35, "title": "Monitoring", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 36,
+    "title": "Python OOP Deep Dive",
+    "instructor": "Gina Ross",
+    "progress": 75,
+    "lessons": [
+      { "id": 3601, "courseId": 36, "title": "Classes & Objects", "isCompleted": true },
+      { "id": 3602, "courseId": 36, "title": "Inheritance", "isCompleted": true },
+      { "id": 3603, "courseId": 36, "title": "Polymorphism", "isCompleted": true },
+      { "id": 3604, "courseId": 36, "title": "Encapsulation", "isCompleted": true },
+      { "id": 3605, "courseId": 36, "title": "Abstraction", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 37,
+    "title": "React Native with Firebase",
+    "instructor": "Hugo Price",
+    "progress": 18,
+    "lessons": [
+      { "id": 3701, "courseId": 37, "title": "Firebase Setup", "isCompleted": true },
+      { "id": 3702, "courseId": 37, "title": "Auth", "isCompleted": false },
+      { "id": 3703, "courseId": 37, "title": "Firestore", "isCompleted": false },
+      { "id": 3704, "courseId": 37, "title": "Storage", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 38,
+    "title": "Python NumPy Mastery",
+    "instructor": "Isla Murphy",
+    "progress": 60,
+    "lessons": [
+      { "id": 3801, "courseId": 38, "title": "Arrays", "isCompleted": true },
+      { "id": 3802, "courseId": 38, "title": "Indexing", "isCompleted": true },
+      { "id": 3803, "courseId": 38, "title": "Broadcasting", "isCompleted": true },
+      { "id": 3804, "courseId": 38, "title": "Linear Algebra", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 39,
+    "title": "AI Prompt Engineering Pro",
+    "instructor": "Jake Sullivan",
+    "progress": 38,
+    "lessons": [
+      { "id": 3901, "courseId": 39, "title": "Zero-Shot", "isCompleted": true },
+      { "id": 3902, "courseId": 39, "title": "Few-Shot", "isCompleted": true },
+      { "id": 3903, "courseId": 39, "title": "Chain of Thought", "isCompleted": false },
+      { "id": 3904, "courseId": 39, "title": "System Prompts", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 40,
+    "title": "Python Pandas Deep Dive",
+    "instructor": "Kelly Morgan",
+    "progress": 48,
+    "lessons": [
+      { "id": 4001, "courseId": 40, "title": "DataFrames", "isCompleted": true },
+      { "id": 4002, "courseId": 40, "title": "GroupBy", "isCompleted": true },
+      { "id": 4003, "courseId": 40, "title": "Merge & Join", "isCompleted": false },
+      { "id": 4004, "courseId": 40, "title": "Time Series", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 41,
+    "title": "React Native Performance",
+    "instructor": "Liam Parker",
+    "progress": 22,
+    "lessons": [
+      { "id": 4101, "courseId": 41, "title": "Profiling", "isCompleted": true },
+      { "id": 4102, "courseId": 41, "title": "Memoization", "isCompleted": false },
+      { "id": 4103, "courseId": 41, "title": "FlatList Optimization", "isCompleted": false },
+      { "id": 4104, "courseId": 41, "title": "Hermes Engine", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 42,
+    "title": "Python Requests & APIs",
+    "instructor": "Maya Collins",
+    "progress": 68,
+    "lessons": [
+      { "id": 4201, "courseId": 42, "title": "HTTP Basics", "isCompleted": true },
+      { "id": 4202, "courseId": 42, "title": "GET & POST", "isCompleted": true },
+      { "id": 4203, "courseId": 42, "title": "Headers & Auth", "isCompleted": true },
+      { "id": 4204, "courseId": 42, "title": "Sessions", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 43,
+    "title": "AI Image Generation",
+    "instructor": "Nathan Reed",
+    "progress": 30,
+    "lessons": [
+      { "id": 4301, "courseId": 43, "title": "DALL-E", "isCompleted": true },
+      { "id": 4302, "courseId": 43, "title": "Midjourney", "isCompleted": true },
+      { "id": 4303, "courseId": 43, "title": "Stable Diffusion", "isCompleted": false },
+      { "id": 4304, "courseId": 43, "title": "ComfyUI", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 44,
+    "title": "Python Matplotlib & Plotly",
+    "instructor": "Oscar Hughes",
+    "progress": 52,
+    "lessons": [
+      { "id": 4401, "courseId": 44, "title": "Line Plots", "isCompleted": true },
+      { "id": 4402, "courseId": 44, "title": "Bar Charts", "isCompleted": true },
+      { "id": 4403, "courseId": 44, "title": "Scatter Plots", "isCompleted": false },
+      { "id": 4404, "courseId": 44, "title": "Interactive Plots", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 45,
+    "title": "React Native with Expo",
+    "instructor": "Paula Simmons",
+    "progress": 15,
+    "lessons": [
+      { "id": 4501, "courseId": 45, "title": "Expo Setup", "isCompleted": true },
+      { "id": 4502, "courseId": 45, "title": "Expo Router", "isCompleted": false },
+      { "id": 4503, "courseId": 45, "title": "EAS Build", "isCompleted": false },
+      { "id": 4504, "courseId": 45, "title": "OTA Updates", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 46,
+    "title": "Python SQL & Databases",
+    "instructor": "Quincy Adams",
+    "progress": 42,
+    "lessons": [
+      { "id": 4601, "courseId": 46, "title": "SQLite", "isCompleted": true },
+      { "id": 4602, "courseId": 46, "title": "PostgreSQL", "isCompleted": true },
+      { "id": 4603, "courseId": 46, "title": "SQLAlchemy", "isCompleted": false },
+      { "id": 4604, "courseId": 46, "title": "Redis", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 47,
+    "title": "AI Voice & Speech",
+    "instructor": "Rosa Diaz",
+    "progress": 12,
+    "lessons": [
+      { "id": 4701, "courseId": 47, "title": "Speech-to-Text", "isCompleted": true },
+      { "id": 4702, "courseId": 47, "title": "Text-to-Speech", "isCompleted": false },
+      { "id": 4703, "courseId": 47, "title": "Voice Assistants", "isCompleted": false },
+      { "id": 4704, "courseId": 47, "title": "Real-time Audio", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 48,
+    "title": "Python Regular Expressions",
+    "instructor": "Steve Carter",
+    "progress": 85,
+    "lessons": [
+      { "id": 4801, "courseId": 48, "title": "re Module", "isCompleted": true },
+      { "id": 4802, "courseId": 48, "title": "Patterns", "isCompleted": true },
+      { "id": 4803, "courseId": 48, "title": "Groups", "isCompleted": true },
+      { "id": 4804, "courseId": 48, "title": "Lookahead", "isCompleted": true },
+      { "id": 4805, "courseId": 48, "title": "Substitution", "isCompleted": true }
+    ]
+  },
+  {
+    "id": 49,
+    "title": "React Native UI Libraries",
+    "instructor": "Tara Wilson",
+    "progress": 28,
+    "lessons": [
+      { "id": 4901, "courseId": 49, "title": "NativeBase", "isCompleted": true },
+      { "id": 4902, "courseId": 49, "title": "React Native Paper", "isCompleted": false },
+      { "id": 4903, "courseId": 49, "title": "Tamagui", "isCompleted": false },
+      { "id": 4904, "courseId": 49, "title": "UI Kitten", "isCompleted": false }
+    ]
+  },
+  {
+    "id": 50,
+    "title": "AI Future Trends 2026",
+    "instructor": "Umar Farooq",
+    "progress": 5,
+    "lessons": [
+      { "id": 5001, "courseId": 50, "title": "AGI Roadmap", "isCompleted": true },
+      { "id": 5002, "courseId": 50, "title": "Multimodal AI", "isCompleted": false },
+      { "id": 5003, "courseId": 50, "title": "Edge AI", "isCompleted": false },
+      { "id": 5004, "courseId": 50, "title": "Quantum ML", "isCompleted": false }
+    ]
+  }
+]

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main App Flow — Help</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #232526 0%, #414345 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #232526 0%, #414345 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header p { opacity: 0.9; font-size: 14px; }
+        .content { padding: 30px; }
+        .section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #414345;
+        }
+        .section h2 {
+            color: #414345;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+        .section p, .section li {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #555;
+        }
+        .section ul { padding-left: 20px; }
+        .section li { margin-bottom: 6px; }
+        .flow-box {
+            background: #e8eaf6;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: #333;
+            white-space: pre-wrap;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-right: 6px;
+        }
+        .badge-getx { background: #00d2d3; color: white; }
+        .badge-clean { background: #ff6b6b; color: white; }
+        .badge-mvvm { background: #54a0ff; color: white; }
+        .badge-riverpod { background: #9c88ff; color: white; }
+        .badge-screenutil { background: #ff9f43; color: white; }
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .file-ref {
+            background: #2d3436;
+            color: #dfe6e9;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .arrow { text-align: center; font-size: 24px; color: #414345; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Main App Flow</h1>
+            <p>App Start to Screen — Complete Bootstrap Flow</p>
+        </div>
+        <div class="content">
+
+            <div class="section">
+                <h2>Tags</h2>
+                <span class="badge badge-getx">GetX</span>
+                <span class="badge badge-riverpod">Riverpod</span>
+                <span class="badge badge-clean">CLEAN</span>
+                <span class="badge badge-mvvm">MVVM</span>
+                <span class="badge badge-screenutil">ScreenUtil</span>
+            </div>
+
+            <div class="section">
+                <h2>1. Yeh Flow Kya Hai?</h2>
+                <p>Yeh flow batata hai app start hone se screen render hone tak ka complete path. <span class="highlight">main.dart</span> me sab kuch wire hota hai — DI, navigation, aur state management setup.</p>
+            </div>
+
+            <div class="section">
+                <h2>2. Files Involved</h2>
+                <ul>
+                    <li><span class="file-ref">lib/main.dart</span> — App entry point + DI bootstrap</li>
+                    <li><span class="file-ref">lib/background/sync_worker.dart</span> — WorkManager background sync</li>
+                    <li><span class="file-ref">lib/core/storage/secure_token_storage.dart</span> — Token check</li>
+                    <li><span class="file-ref">lib/presentation/screens/login_screen.dart</span> — Login screen</li>
+                    <li><span class="file-ref">lib/presentation/screens/course_dashboard_screen.dart</span> — Dashboard screen</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>3. Complete Flow (Step by Step)</h2>
+                <div class="flow-box">
+Step 1: main() call hota hai
+     │  WidgetsFlutterBinding.ensureInitialized()
+     │  SyncWorker.register() — WorkManager init
+     │
+     ▼
+Step 2: Dependencies create hoti hain
+     │  AppDatabase() — Drift SQLite
+     │  NetworkInfoImpl() — Connectivity check
+     │  SecureTokenStorage() — Token storage
+     │  AuthLocalDataSource(tokenStorage)
+     │  CourseLocalDataSource(db)
+     │  CourseRemoteDataSource()
+     │
+     ▼
+Step 3: Repositories create hoti hain
+     │  AuthRepositoryImpl(authLocal)
+     │  CourseRepositoryImpl(remote, local, networkInfo)
+     │
+     ▼
+Step 4: UseCases create hote hain
+     │  LoginUseCase(authRepository)
+     │  GetCoursesUseCase(courseRepository)
+     │
+     ▼
+Step 5: GetX DI me register hota hai
+     │  Get.put(tokenStorage)
+     │  Get.put(loginUseCase)
+     │  Get.put(getCoursesUseCase)
+     │  Get.put(LoginViewModel(loginUseCase))
+     │  Get.put(CourseDashboardViewModel(getCoursesUseCase))
+     │
+     ▼
+Step 6: runApp() call hota hai
+     │  ProviderScope(child: LearningDashboardApp())
+     │  ScreenUtilInit → GetMaterialApp
+     │  home: _RootGate()
+     │
+     ▼
+Step 7: _RootGate check karta hai
+     │  Get.find<SecureTokenStorage>().readToken()
+     │
+     ├── Token hai → CourseDashboardScreen()
+     │   (User already logged in)
+     │
+     └── Token nahi → LoginScreen()
+         (User ko login karna hoga)
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>4. DI Bootstrap (GetX)</h2>
+                <p>main.dart me <span class="highlight">GetX</span> ka use karke dependencies inject hoti hain:</p>
+                <div class="flow-box">
+Get.put(tokenStorage)              // SecureTokenStorage
+Get.put(loginUseCase)               // LoginUseCase
+Get.put(getCoursesUseCase)          // GetCoursesUseCase
+Get.put(LoginViewModel(loginUseCase))           // LoginViewModel
+Get.put(CourseDashboardViewModel(getCoursesUseCase))  // DashboardVM
+
+// Baad me koi bhi screen chahe toh:
+Get.find<LoginViewModel>()  // Auto-mil jayega
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>5. Riverpod Provider Graph (Detail Screen ke liye)</h2>
+                <p>Detail screen ke liye Riverpod providers bhi define hain:</p>
+                <div class="flow-box">
+appDatabaseProvider
+    └─ AppDatabase()
+
+courseLocalDataSourceProvider
+    └─ CourseLocalDataSource(db)
+
+courseRemoteDataSourceProvider
+    └─ CourseRemoteDataSource()
+
+networkInfoProvider
+    └─ NetworkInfoImpl()
+
+courseRepositoryProvider
+    └─ CourseRepositoryImpl(remote, local, networkInfo)
+
+getCourseDetailUseCaseProvider
+    └─ GetCourseDetailUseCase(repository)
+
+markLessonCompletedUseCaseProvider
+    └─ MarkLessonCompletedUseCase(repository)
+
+courseDetailViewModelProvider (Family)
+    └─ CourseDetailViewModel(courseId)
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>6. ScreenUtilInit Ka Role</h2>
+                <p><span class="file-ref">flutter_screenutil</span> responsive UI ke liye use hota hai. Design size 375x812 (iPhone X) set hai:</p>
+                <div class="flow-box">
+ScreenUtilInit(
+  designSize: Size(375, 812),
+  minTextAdapt: true,
+  splitScreenMode: true,
+  builder: (context, child) => GetMaterialApp(...)
+)
+
+// Usage:
+EdgeInsets.all(24.w)    // .w = width responsive
+EdgeInsets.all(16.h)    // .h = height responsive
+fontSize: 14.sp         // .sp = font responsive
+borderRadius: 12.r     // .r = radius responsive
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>7. _RootGate Ka Role</h2>
+                <p>_RootGate ek <span class="highlight">StatefulWidget</span> hai jo decide karta hai kis screen pe jana hai:</p>
+                <div class="flow-box">
+_RootGateState._check()
+    │
+    ├── Token mil gaya → _hasSession = true
+    │   → CourseDashboardScreen()
+    │
+    └── Token nahi mila → _hasSession = false
+        → LoginScreen()
+
+// Loading state:
+_resolved = false → CircularProgressIndicator
+_resolved = true  → Screen show
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

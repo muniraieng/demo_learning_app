@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture Overview — Help</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header p { opacity: 0.9; font-size: 14px; }
+        .content { padding: 30px; }
+        .section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #302b63;
+        }
+        .section h2 {
+            color: #302b63;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+        .section p, .section li {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #555;
+        }
+        .section ul { padding-left: 20px; }
+        .section li { margin-bottom: 6px; }
+        .flow-box {
+            background: #e8eaf6;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: #333;
+            white-space: pre-wrap;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-right: 6px;
+        }
+        .badge-getx { background: #00d2d3; color: white; }
+        .badge-clean { background: #ff6b6b; color: white; }
+        .badge-mvvm { background: #54a0ff; color: white; }
+        .badge-riverpod { background: #9c88ff; color: white; }
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .file-ref {
+            background: #2d3436;
+            color: #dfe6e9;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .layer-box {
+            border: 2px solid #302b63;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            background: #f0f0ff;
+        }
+        .layer-title {
+            font-weight: bold;
+            color: #302b63;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Architecture Overview</h1>
+            <p>CLEAN + MVVM — Full Layer Binding & Data Flow</p>
+        </div>
+        <div class="content">
+
+            <div class="section">
+                <h2>Tags</h2>
+                <span class="badge badge-getx">GetX</span>
+                <span class="badge badge-riverpod">Riverpod</span>
+                <span class="badge badge-clean">CLEAN</span>
+                <span class="badge badge-mvvm">MVVM</span>
+            </div>
+
+            <div class="section">
+                <h2>1. Yeh Architecture Kya Hai?</h2>
+                <p>Yeh app <span class="highlight">CLEAN Architecture</span> + <span class="highlight">MVVM</span> pattern use karta hai. Har layer ka apna kaam hai, aur layers ek doosre se independent hain. Dependency rule: <strong>outer layer inner layer ko call karti hai, inner layer ko outer ka pata nahi</strong>.</p>
+            </div>
+
+            <div class="section">
+                <h2>2. Complete Layer Diagram</h2>
+                <div class="flow-box">
+┌─────────────────────────────────────────────────────────────┐
+│                    PRESENTATION LAYER                         │
+│                                                              │
+│  Screens (Widgets)          ViewModels (State)               │
+│  ┌─────────────────┐       ┌──────────────────────┐         │
+│  │ LoginScreen     │──────▶│ LoginViewModel (GetX) │         │
+│  └─────────────────┘       └──────────────────────┘         │
+│  ┌─────────────────┐       ┌──────────────────────┐         │
+│  │ DashboardScreen │──────▶│ DashboardVM (GetX)    │         │
+│  └─────────────────┘       └──────────────────────┘         │
+│  ┌─────────────────┐       ┌──────────────────────┐         │
+│  │ DetailScreen    │──────▶│ DetailVM (Riverpod)  │         │
+│  └─────────────────┘       └──────────────────────┘         │
+│                                                              │
+│  Widgets: CourseCard                                        │
+└──────────────────────────┬──────────────────────────────────┘
+                           │ calls
+┌──────────────────────────▼──────────────────────────────────┐
+│                      DOMAIN LAYER                            │
+│                                                              │
+│  Entities (Pure Dart)       Repository Interfaces            │
+│  ┌─────────────────┐       ┌──────────────────────┐         │
+│  │ Course          │       │ AuthRepository       │         │
+│  │ Lesson          │       │ CourseRepository     │         │
+│  └─────────────────┘       └──────────────────────┘         │
+│                                                              │
+│  UseCases (Business Logic)                                   │
+│  ┌─────────────────────────────────────────────┐            │
+│  │ LoginUseCase                                 │            │
+│  │ GetCoursesUseCase                            │            │
+│  │ GetCourseDetailUseCase                       │            │
+│  │ MarkLessonCompletedUseCase                   │            │
+│  └─────────────────────────────────────────────┘            │
+└──────────────────────────┬──────────────────────────────────┘
+                           │ implements
+┌──────────────────────────▼──────────────────────────────────┐
+│                       DATA LAYER                             │
+│                                                              │
+│  Repository Implementations    DataSources                   │
+│  ┌─────────────────────────┐  ┌──────────────────────────┐  │
+│  │ AuthRepositoryImpl      │  │ AuthLocalDataSource      │  │
+│  │ CourseRepositoryImpl   │  │ CourseRemoteDataSource   │  │
+│  └─────────────────────────┘  │ CourseLocalDataSource    │  │
+│                               └──────────────────────────┘  │
+│                                                              │
+│  Models (JSON serialization)                                 │
+│  ┌─────────────────────────────────────────────┐            │
+│  │ CourseModel, LessonModel                     │            │
+│  └─────────────────────────────────────────────┘            │
+└──────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────┐
+│                      CORE LAYER                               │
+│                                                              │
+│  Constants    Errors    Network    Storage    Utils           │
+│  ┌────────┐ ┌──────┐ ┌────────┐ ┌────────┐ ┌────────┐      │
+│  │AppConst│ │Failur│ │ApiClient│ │SecureSt│ │InputVal│      │
+│  │        │ │  es  │ │NetworkI│ │orage   │ │idators │      │
+│  └────────┘ └──────┘ └────────┘ └────────┘ └────────┘      │
+└──────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────┐
+│                      DATABASE LAYER                           │
+│                                                              │
+│  ┌─────────────────────────────────────────────┐            │
+│  │ AppDatabase (Drift)                          │            │
+│  │ - Courses table                               │            │
+│  │ - cacheCourses()                              │            │
+│  │ - getCachedCourses()                          │            │
+│  │ - updateLessonCompletion()                    │            │
+│  └─────────────────────────────────────────────┘            │
+└──────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────┐
+│                      BACKGROUND LAYER                         │
+│                                                              │
+│  ┌─────────────────────────────────────────────┐            │
+│  │ SyncWorker (WorkManager)                      │            │
+│  │ - Periodic sync every 6 hours                 │            │
+│  │ - Network connected constraint                │            │
+│  └─────────────────────────────────────────────┘            │
+└──────────────────────────────────────────────────────────────┘
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>3. Har Layer Ka Role</h2>
+
+                <div class="layer-box">
+                    <div class="layer-title">Presentation Layer</div>
+                    <ul>
+                        <li><strong>Screens:</strong> UI dikhate hain, koi business logic nahi</li>
+                        <li><strong>ViewModels:</strong> State manage karte hain (GetX ya Riverpod)</li>
+                        <li><strong>Widgets:</strong> Reusable UI components (CourseCard)</li>
+                    </ul>
+                </div>
+
+                <div class="layer-box">
+                    <div class="layer-title">Domain Layer</div>
+                    <ul>
+                        <li><strong>Entities:</strong> Pure Dart classes (Course, Lesson) — koi framework dependency nahi</li>
+                        <li><strong>Repository Interfaces:</strong> Abstract classes — define karti hain kya karna hai, kaise nahi</li>
+                        <li><strong>UseCases:</strong> Ek ek kaam karte hain (Single Responsibility)</li>
+                    </ul>
+                </div>
+
+                <div class="layer-box">
+                    <div class="layer-title">Data Layer</div>
+                    <ul>
+                        <li><strong>Repository Implementations:</strong> Domain interfaces ko implement karte hain</li>
+                        <li><strong>DataSources:</strong> Remote (JSON asset) aur Local (Drift DB)</li>
+                        <li><strong>Models:</strong> JSON serialization/deserialization</li>
+                    </ul>
+                </div>
+
+                <div class="layer-box">
+                    <div class="layer-title">Core Layer</div>
+                    <ul>
+                        <li><strong>Constants:</strong> App-wide constants</li>
+                        <li><strong>Errors:</strong> Failure classes (ServerFailure, AuthFailure, etc.)</li>
+                        <li><strong>Network:</strong> Dio client + NetworkInfo</li>
+                        <li><strong>Storage:</strong> SecureTokenStorage (flutter_secure_storage)</li>
+                        <li><strong>Utils:</strong> InputValidators</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>4. MVVM Pattern — Har Screen Mein</h2>
+
+                <div class="layer-box">
+                    <div class="layer-title">Login Screen (GetX)</div>
+                    <div class="flow-box">
+Model:     AuthRepositoryImpl (data layer)
+ViewModel: LoginViewModel extends GetxController
+           - email, password, isLoading, error (all .obs)
+           - login() method
+View:      LoginScreen extends GetView<LoginViewModel>
+           - TextFormField, FilledButton
+           - Obx() se reactive UI
+                    </div>
+                </div>
+
+                <div class="layer-box">
+                    <div class="layer-title">Dashboard Screen (GetX)</div>
+                    <div class="flow-box">
+Model:     CourseRepositoryImpl (data layer)
+ViewModel: CourseDashboardViewModel extends GetxController
+           - state, courses, failure (all .obs)
+           - load() / refresh() methods
+View:      CourseDashboardScreen extends GetView<CourseDashboardViewModel>
+           - ListView, CourseCard, RefreshIndicator
+           - Obx() se reactive UI
+                    </div>
+                </div>
+
+                <div class="layer-box">
+                    <div class="layer-title">Detail Screen (Riverpod)</div>
+                    <div class="flow-box">
+Model:     CourseRepositoryImpl (data layer)
+ViewModel: CourseDetailViewModel extends AutoDisposeFamilyNotifier
+           - build(courseId) → initial state
+           - load() / completeLesson() methods
+View:      CourseDetailScreen extends ConsumerWidget
+           - ref.watch(provider) se reactive UI
+           - ref.read(provider.notifier) se actions
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>5. Data Flow — Ek Request Ka Safar</h2>
+                <div class="flow-box">
+1. User taps "Continue" on CourseCard
+       │
+       ▼
+2. Get.to(() => CourseDetailScreen(courseId: c.id))
+       │
+       ▼
+3. CourseDetailScreen build() call
+       │  ref.watch(courseDetailViewModelProvider(courseId))
+       │
+       ▼
+4. CourseDetailViewModel.build(courseId)
+       │  Future.microtask(() => load())
+       │
+       ▼
+5. load() → GetCourseDetailUseCase.call(courseId)
+       │
+       ▼
+6. CourseRepositoryImpl.getCourseDetail(courseId)
+       │  _safeCache() → Drift DB se read
+       │
+       ▼
+7. CourseLocalDataSource.getCachedCourses()
+       │
+       ▼
+8. AppDatabase.getCachedCourses()
+       │  SELECT * FROM courses
+       │
+       ▼
+9. Result → Repository → UseCase → ViewModel
+       │
+       ▼
+10. state = CourseDetailState(course: course)
+       │
+       ▼
+11. UI rebuild → Lessons list dikhti hai
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>6. State Management — GetX vs Riverpod</h2>
+                <div class="flow-box">
+┌─────────────────────────────────────────────────────────────┐
+│                    GetX (Login + Dashboard)                   │
+│                                                              │
+│  Controller: extends GetxController                          │
+│  State:      .obs variables (reactive)                       │
+│  UI:         Obx(() => ...) widget                           │
+│  DI:         Get.put() / Get.find()                          │
+│  Nav:        Get.to() / Get.offAll()                         │
+│                                                              │
+│  Pros: Simple, fast, less boilerplate                        │
+│  Cons: Less type-safe, global state                          │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│              Riverpod (Detail Screen)                         │
+│                                                              │
+│  Notifier:   extends AutoDisposeFamilyNotifier<State, Arg>   │
+│  State:      Immutable State class                           │
+│  UI:         ref.watch(provider) / ref.read(provider)        │
+│  DI:         Provider graph (compile-time safe)              │
+│  Cleanup:    autoDispose (auto memory cleanup)               │
+│                                                              │
+│  Pros: Type-safe, testable, no context needed                │
+│  Cons: More boilerplate                                      │
+└─────────────────────────────────────────────────────────────┘
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>7. Offline-First Data Flow</h2>
+                <div class="flow-box">
+ONLINE:
+  JSON Asset → RemoteDataSource → Repository
+                                    │
+                                    ▼
+                              Drift DB (cache)
+                                    │
+                                    ▼
+                                   UI
+
+OFFLINE:
+  Drift DB → LocalDataSource → Repository → UI
+
+LESSON COMPLETE (Offline me bhi):
+  User tap → Drift DB update → Progress recalculate → UI update
+
+BACKGROUND SYNC:
+  WorkManager (6hr) → SyncWorker → (Future: API sync)
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

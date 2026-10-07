@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Detail Screen — Help</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header p { opacity: 0.9; font-size: 14px; }
+        .content { padding: 30px; }
+        .section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #f5576c;
+        }
+        .section h2 {
+            color: #f5576c;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+        .section p, .section li {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #555;
+        }
+        .section ul { padding-left: 20px; }
+        .section li { margin-bottom: 6px; }
+        .flow-box {
+            background: #fce4ec;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: #333;
+            white-space: pre-wrap;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-right: 6px;
+        }
+        .badge-riverpod { background: #9c88ff; color: white; }
+        .badge-clean { background: #ff6b6b; color: white; }
+        .badge-mvvm { background: #54a0ff; color: white; }
+        .badge-offline { background: #ff9f43; color: white; }
+        .badge-screenutil { background: #ff9f43; color: white; }
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .file-ref {
+            background: #2d3436;
+            color: #dfe6e9;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .img-placeholder {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            height: 180px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            margin: 15px 0;
+            text-align: center;
+            padding: 20px;
+        }
+        .provider-box {
+            background: #ede7f6;
+            border-radius: 8px;
+            padding: 12px;
+            margin: 8px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Course Detail Screen</h1>
+            <p>Kaise kaam karta hai — Step by Step Flow</p>
+        </div>
+        <div class="content">
+
+            <div class="section">
+                <h2>Tags</h2>
+                <span class="badge badge-riverpod">Riverpod Notifier</span>
+                <span class="badge badge-clean">CLEAN</span>
+                <span class="badge badge-mvvm">MVVM</span>
+                <span class="badge badge-offline">Offline-First</span>
+                <span class="badge badge-screenutil">ScreenUtil</span>
+            </div>
+
+            <div class="section">
+                <h2>1. Yeh Screen Kya Karta Hai?</h2>
+                <p>Detail Screen ek <span class="highlight">specific course</span> ke saare lessons dikhta hai. User yahan se lessons ko <span class="highlight">complete</span> kar sakta hai. Progress automatically update hota hai. Screen pe <span class="highlight">RefreshIndicator</span> bhi hai pull-to-refresh ke liye.</p>
+                <div class="img-placeholder">
+                    [Detail Screen Image]<br>
+                    Course title, progress bar, lessons list with checkboxes<br>
+                    Card-based lesson items with "Mark complete" button
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>2. Files Involved</h2>
+                <ul>
+                    <li><span class="file-ref">lib/presentation/screens/course_detail_screen.dart</span> — UI (ConsumerWidget)</li>
+                    <li><span class="file-ref">lib/presentation/viewmodels/course_detail_viewmodel.dart</span> — State (Riverpod Notifier)</li>
+                    <li><span class="file-ref">lib/domain/usecases/get_course_detail_usecase.dart</span> — Detail fetch logic</li>
+                    <li><span class="file-ref">lib/domain/usecases/mark_lesson_completed_usecase.dart</span> — Lesson complete logic</li>
+                    <li><span class="file-ref">lib/data/repositories/course_repository_impl.dart</span> — Data + Offline</li>
+                    <li><span class="file-ref">lib/database/app_database.dart</span> — Drift SQLite</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>3. Complete Flow (Step by Step)</h2>
+                <div class="flow-box">
+Step 1: Dashboard se course tap kiya
+     │  Get.to(() => CourseDetailScreen(courseId: c.id))
+     │
+     ▼
+Step 2: Screen khulta hai
+     │  ConsumerWidget ref.watch(provider) karta hai
+     │  courseDetailViewModelProvider(courseId)
+     │
+     ▼
+Step 3: Provider create hota hai
+     │  CourseDetailViewModel(courseId) build call
+     │  state = CourseDetailState(isLoading: true)
+     │  Future.microtask(load) schedule hota hai
+     │
+     ▼
+Step 4: Load data
+     │  GetCourseDetailUseCase.call(courseId)
+     │  → Repository se course detail aata hai
+     │  → Drift DB se read hota hai (single source of truth)
+     │
+     ▼
+Step 5: State update
+     │  state = CourseDetailState(
+     │    isLoading: false,
+     │    course: course,
+     │    failure: null
+     │  )
+     │  UI rebuild hota hai
+     │
+     ▼
+Step 6: User lesson complete karta hai
+     │  "Mark complete" button tap
+     │  → vm.completeLesson(lessonId)
+     │  → MarkLessonCompletedUseCase.call()
+     │  → Drift DB me update
+     │  → Progress recalculate
+     │  → State update → UI rebuild
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>4. Riverpod Provider Graph</h2>
+                <p>Yeh screen <span class="highlight">Riverpod</span> use karta hai (GetX nahi). Provider graph aisa dikhta hai:</p>
+                <div class="provider-box">
+appDatabaseProvider
+    └─ AppDatabase() (Drift DB)
+
+courseLocalDataSourceProvider
+    └─ CourseLocalDataSource(db)
+
+courseRemoteDataSourceProvider
+    └─ CourseRemoteDataSource()
+
+networkInfoProvider
+    └─ NetworkInfoImpl()
+
+courseRepositoryProvider
+    └─ CourseRepositoryImpl(remote, local, networkInfo)
+
+getCourseDetailUseCaseProvider
+    └─ GetCourseDetailUseCase(repository)
+
+markLessonCompletedUseCaseProvider
+    └─ MarkLessonCompletedUseCase(repository)
+
+courseDetailViewModelProvider (Family)
+    └─ CourseDetailViewModel(courseId)
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>5. Riverpod vs GetX — Farq Kya Hai?</h2>
+                <div class="flow-box">
+GetX (Login + Dashboard):
+    - GetxController + .obs variables
+    - Obx() widget se reactive UI
+    - Get.put() se dependency inject
+    - Simple aur quick
+
+Riverpod (Detail Screen):
+    - AutoDisposeFamilyNotifier + State class
+    - ref.watch() se reactive UI
+    - Provider graph se dependency inject
+    - Type-safe aur test-friendly
+    - autoDispose = auto cleanup
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>6. Lesson Complete Kaise Kaam Karta Hai?</h2>
+                <div class="flow-box">
+User "Mark complete" tap karta hai
+    │
+    ▼
+vm.completeLesson(lessonId)
+    │
+    ▼
+MarkLessonCompletedUseCase.call(courseId, lessonId)
+    │
+    ▼
+CourseRepositoryImpl.markLessonCompleted()
+    │
+    ▼
+Drift DB me update:
+    - Course row find karo (courseId se)
+    - Lessons JSON parse karo
+    - Specific lesson ko complete mark karo
+    - Progress recalculate: (done/total) * 100
+    - Updated JSON save karo
+    │
+    ▼
+getCourseDetail() se updated course return
+    │
+    ▼
+State update → UI rebuild
+    - Check icon green ho jata hai
+    - "Completed" text dikhta hai
+    - Progress bar update hota hai
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>7. CLEAN Architecture Flow</h2>
+                <div class="flow-box">
+┌─────────────────────────────────────────────┐
+│  PRESENTATION                                │
+│  CourseDetailScreen (ConsumerWidget)         │
+│    └─ ref.watch(provider) → state            │
+│    └─ ref.read(provider.notifier) → vm       │
+│    └─ ListView me lessons (Card-based)       │
+│    └─ "Mark complete" button                 │
+│    └─ RefreshIndicator (pull-to-refresh)    │
+└──────────────────┬──────────────────────────┘
+                   │
+┌──────────────────▼──────────────────────────┐
+│  VIEWMODEL (Riverpod)                        │
+│  CourseDetailViewModel                       │
+│    extends AutoDisposeFamilyNotifier         │
+│    <CourseDetailState, int>                  │
+│                                              │
+│    - build(courseId) → initial state          │
+│    - load() → data fetch                     │
+│    - completeLesson(lessonId) → update       │
+└──────────────────┬──────────────────────────┘
+                   │
+┌──────────────────▼──────────────────────────┐
+│  DOMAIN                                      │
+│  GetCourseDetailUseCase                      │
+│  MarkLessonCompletedUseCase                  │
+│    - call() → Repository ko jata hai         │
+└──────────────────┬──────────────────────────┘
+                   │
+┌──────────────────▼──────────────────────────┐
+│  DATA                                        │
+│  CourseRepositoryImpl                        │
+│    - getCourseDetail() → Drift DB se read    │
+│    - markLessonCompleted() → Drift DB update │
+│                                              │
+│  DataSources:                                │
+│    - CourseLocalDataSource (Drift DB)        │
+│    - CourseRemoteDataSource (JSON asset)     │
+└──────────────────────────────────────────────┘
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>8. autoDispose Ka Matlab?</h2>
+                <p><span class="file-ref">autoDispose</span> ka matlab hai jab user screen se bahar jata hai, toh provider apne aap <span class="highlight">cleanup</span> ho jata hai. Memory leak nahi hota.</p>
+            </div>
+
+            <div class="section">
+                <h2>9. Family Provider Ka Matlab?</h2>
+                <p><span class="file-ref">Family</span> ka matlab hai ek hi provider se multiple instances bana sakte hain. Har course ka apna alag ViewModel hota hai:</p>
+                <div class="provider-box">
+courseDetailViewModelProvider(1) → Course 1 ka ViewModel
+courseDetailViewModelProvider(2) → Course 2 ka ViewModel
+courseDetailViewModelProvider(3) → Course 3 ka ViewModel
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>10. ScreenUtil Responsive UI</h2>
+                <p>Actual codebase me <span class="file-ref">flutter_screenutil</span> use hota hai:</p>
+                <div class="flow-box">
+EdgeInsets.all(16.w)     // .w = width responsive
+fontSize: 22.sp          // .sp = font responsive
+Icon size: 28.sp         // icons bhi responsive
+SizedBox(height: 6.h)   // .h = height responsive
+borderRadius: 5.r       // .r = radius responsive
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
